@@ -10,4 +10,5 @@ export const envSchema = Joi.object({
   POSTGRES_DB: Joi.string().required(),
   PGADMIN_DEFAULT_EMAIL: Joi.string().required(),
   PGADMIN_DEFAULT_PASSWORD: Joi.string().required(),
+  JWT_SECRET: Joi.string().required(),
 });
