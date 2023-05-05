@@ -17,13 +17,33 @@ import { Auth } from 'src/auth/decorators/auth.decorator';
 import { Roles } from 'src/auth/interfaces/roles.interface';
 import { GetUser } from 'src/auth/decorators/get-user.decorator';
 import { User } from 'src/auth/entities/user.entity';
+import { ApiTags, ApiResponse } from '@nestjs/swagger/dist/decorators';
+import { Product } from './entities';
 
+@ApiTags('products')
 @Controller('products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Post()
   @Auth()
+  @ApiResponse({
+    status: 201,
+    description: 'Product created successfully',
+    type: Product,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Product was not created. Error in the request',
+  })
+  @ApiResponse({
+    status: 401,
+    description: 'No authorize access. No token in the request',
+  })
+  @ApiResponse({
+    status: 403,
+    description: "Forbbiden access. User doesn't have enough privileges",
+  })
   create(
     @Body() createProductDto: CreateProductDto,
     @GetUser('id') user: User,
