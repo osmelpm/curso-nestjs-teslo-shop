@@ -59,9 +59,7 @@ export class FileController {
     )
     file: Express.Multer.File,
   ) {
-    const host = `${this.configService.get(
-      'server_host',
-    )}:${this.configService.get('server_port')}`;
+    const host = this.configService.get('api_host');
     const secureUrl = `${host}/api/files/product/${file.filename}`;
     return { secureUrl };
   }
