@@ -1,6 +1,7 @@
 import * as Joi from 'joi';
 
 export const envSchema = Joi.object({
+  STAGE: Joi.string().required(),
   SERVER_HOST: Joi.string().required(),
   SERVER_PORT: Joi.number().default(3000),
   DB_HOST: Joi.string().required(),

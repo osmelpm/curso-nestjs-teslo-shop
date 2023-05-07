@@ -1,4 +1,5 @@
 export default () => ({
+  stage: process.env.STAGE || 'dev',
   server_host: process.env.SERVER_HOST || 'localhost',
   server_port: +process.env.SERVER_PORT,
   db_host: process.env.DB_HOST,

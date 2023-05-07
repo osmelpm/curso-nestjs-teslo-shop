@@ -25,6 +25,15 @@ import { MessagesWsModule } from './messages-ws/messages-ws.module';
       //imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (ConfigService: ConfigService) => ({
+        ssl: ConfigService.get('stage') === 'prod',
+        // extra: {
+        //   ssl:
+        //     ConfigService.get('stage') === 'prod'
+        //       ? {
+        //           rejectUnauthorized: false,
+        //         }
+        //       : null,
+        // },
         type: 'postgres',
         host: ConfigService.get('db_host'),
         port: ConfigService.get('db_port'),
