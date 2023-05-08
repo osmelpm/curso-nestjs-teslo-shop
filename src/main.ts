@@ -17,7 +17,9 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('TesloShop RESTful API')
-    .setDescription('E-commerce in a small scale')
+    .setDescription(
+      'E-commerce in a small scale. The websocket section can be tested on https://chat-teslo-shop.netlify.app/',
+    )
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
